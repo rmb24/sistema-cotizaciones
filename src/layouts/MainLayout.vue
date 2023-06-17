@@ -33,18 +33,34 @@
         </div>
       </div>
 
-      <q-scroll-area class="fit">
-        <q-list padding>
-          <EssentialLink
-            v-for="link in menuLinks"
-            :key="link.title"
-            v-bind="link"
-          />
-        </q-list>
-      </q-scroll-area>
+      <q-list padding>
+        <EssentialLink
+          v-for="link in menuLinks"
+          :key="link.title"
+          v-bind="link"
+        />
+      </q-list>
+
+      <div class="drawer-footer">
+        <q-item class="logout-link" clickable>
+          <q-item-section avatar>
+            <q-icon name="las la-sign-out-alt" class="logout-icon" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label class="logout-label">Cerrar sesión</q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
     </q-drawer>
     <q-page-container>
-      <router-view />
+      <transition
+        enter-active-class="animated slideInLeft"
+        leave-active-class=" animated slideOutLeft"
+        mode="out-in"
+        appear
+      >
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -58,7 +74,7 @@ const menuLinks = [
     title: 'Inicio',
     caption: 'Página de inicio',
     icon: 'las la-home',
-    link: '/',
+    link: '/home',
   },
   {
     title: 'Clientes',
@@ -70,7 +86,7 @@ const menuLinks = [
     title: 'Materiales',
     caption: 'Administrar materiales',
     icon: 'las la-cubes',
-    link: '/materiales',
+    link: '/materials',
   },
   {
     title: 'Cotizaciones',
@@ -79,7 +95,7 @@ const menuLinks = [
     link: '/cotizaciones',
   },
   {
-    title: 'Histonal',
+    title: 'Historial',
     caption: 'Historial de cotizaciones',
     icon: 'las la-history',
     link: '/historial',
@@ -108,8 +124,8 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
-/* Estilos específicos para este componente */
 .drawer-content {
   background-color: #f5f5f5;
 }
@@ -156,5 +172,75 @@ export default defineComponent({
 
 .q-item-section .q-item-label {
   margin: 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+.q-item-section .q-item-caption {
+  margin: 0;
+  font-size: 14px;
+  color: #999999;
+}
+
+.q-item-section .q-item-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #999999;
+}
+
+.q-item-section .q-item-icon svg {
+  vertical-align: middle;
+}
+
+.q-item-section .q-item-icon + .q-item-label,
+.q-item-section .q-item-icon + .q-item-caption {
+  margin-left: 10px;
+}
+
+.q-item-separator {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid #ebebeb;
+}
+
+.logout-link {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-link:hover {
+  background-color: #ebebeb;
+}
+
+.logout-icon {
+  font-size: 20px;
+  color: #999999;
+}
+
+.logout-label {
+  margin: 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+.drawer-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(100%);
 }
 </style>

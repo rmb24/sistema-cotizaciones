@@ -10,7 +10,7 @@
     </div>
     <q-table
       :rows="clientData"
-      :columns="clientColumns"
+      :columns="clientColumns as any"
       row-key="id"
       flat
       dense

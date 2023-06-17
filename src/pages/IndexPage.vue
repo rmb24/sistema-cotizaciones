@@ -17,7 +17,7 @@
     <div>
       <q-table
         :rows="quotationData"
-        :columns="quotationColumns"
+        :columns="quotationColumns as any"
         row-key="id"
         flat
         dense

@@ -5,8 +5,10 @@
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label class="essential-link-title">{{ title }}</q-item-label>
+      <q-item-label caption class="essential-link-caption">{{
+        caption
+      }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -39,3 +41,37 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.essential-link {
+  padding: 10px;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.essential-link:hover {
+  background-color: #f5f5f5;
+}
+
+.essential-link-icon {
+  font-size: 18px;
+  color: #333333;
+  margin-right: 10px;
+}
+
+.essential-link-title {
+  font-size: 16px;
+  color: #333333;
+  font-weight: bold;
+}
+
+.essential-link-caption {
+  font-size: 14px;
+  color: #666666;
+}
+
+.essential-link-caption + .essential-link-caption {
+  margin-top: 5px;
+}
+</style>
