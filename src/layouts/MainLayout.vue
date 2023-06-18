@@ -92,13 +92,13 @@ const menuLinks = [
     title: 'Cotizaciones',
     caption: 'Realizar cotizaciones',
     icon: 'las la-file-invoice-dollar',
-    link: '/cotizaciones',
+    link: '/orders',
   },
   {
     title: 'Historial',
     caption: 'Historial de cotizaciones',
     icon: 'las la-history',
-    link: '/historial',
+    link: '/history',
   },
 ];
 

@@ -26,6 +26,16 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/MaterialsPage.vue') },
     ],
   },
+  {
+    path: '/orders',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/OrdersPage.vue') }],
+  },
+  {
+    path: '/history',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/HistoryPage.vue') }],
+  },
 
   // Redirect to / when no route matches (404)
   {

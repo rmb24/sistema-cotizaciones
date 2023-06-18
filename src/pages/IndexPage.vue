@@ -62,10 +62,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
+    const router = useRouter();
     const quotationData = ref([
       { id: 1, customer: 'Cliente 1', amount: 500 },
       { id: 2, customer: 'Cliente 2', amount: 800 },
@@ -96,7 +98,7 @@ export default defineComponent({
     const selectAll = ref(false);
 
     const createQuotation = () => {
-      // Lógica para crear una cotización
+      router.push('/orders');
     };
 
     const viewQuotation = (quotation: number) => {
